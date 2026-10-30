@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script>
+    <style>
+        .team-hotspot {
+            position: absolute;
+            z-index: 10;
+            display: grid;
+            width: 2.25rem;
+            height: 2.25rem;
+            place-items: center;
+            transform: translate(-50%, -50%);
+            border: 2px solid rgba(255,255,255,.95);
+            border-radius: 9999px;
+            background: rgba(99,102,241,.55);
+            box-shadow: 0 0 0 4px rgba(99,102,241,.25);
+            transition: background-color .15s ease, box-shadow .15s ease;
+        }
+        .team-hotspot:hover, .team-hotspot:focus-visible, .team-hotspot[data-open="true"] {
+            background: rgba(99,102,241,.95);
+            box-shadow: 0 0 0 6px rgba(129,140,248,.4);
+            outline: none;
+        }
+        .team-hotspot::after {
+            width: .5rem;
+            height: .5rem;
+            border-radius: 9999px;
+            background: white;
+            content: "";
+        }
+        .team-tooltip {
+            position: absolute;
+            bottom: calc(100% + .65rem);
+            left: 50%;
+            visibility: hidden;
+            max-width: min(18rem, calc(100vw - 3rem));
+            transform: translateX(-50%);
+            border: 1px solid rgba(129,140,248,.65);
+            border-radius: .5rem;
+            background: #1e293b;
+            padding: .5rem .75rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,.4);
+            font-size: .875rem;
+            font-weight: 600;
+            line-height: 1.25rem;
+            opacity: 0;
+            pointer-events: none;
+            text-align: center;
+            transition: opacity .15s ease, visibility .15s ease;
+            white-space: nowrap;
+        }
+        .team-tooltip--start { left: 0; transform: none; }
+        .team-tooltip--end { right: 0; left: auto; transform: none; }
+        .team-hotspot:hover .team-tooltip,
+        .team-hotspot:focus-visible .team-tooltip,
+        .team-hotspot[data-open="true"] .team-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        @media (max-width: 640px) {
+            .team-hotspot { width: 1.9rem; height: 1.9rem; }
+            .team-tooltip { font-size: .75rem; }
+        }
+    </style>
 </head>
 <body class="min-h-screen bg-slate-950 font-['Montserrat'] text-white antialiased">
     <div id="vanta" class="pointer-events-none fixed inset-x-0 bottom-0 top-[72px] z-0 bg-slate-950 md:top-[60px]" aria-hidden="true"></div>
@@ -55,6 +117,10 @@
                         <p class="mb-3 text-sm font-semibold uppercase tracking-[0.15em] text-indigo-300">Campus Room Booking | IoT</p>
                         <h2 class="text-xl font-bold leading-snug text-white sm:text-2xl">e-RoomReserve: AI-Driven Smart Campus Space Optimization System with Real-Time Occupancy Detection and Autonomous Reservation Control using Bluetooth Low Energy (BLE) Technology</h2>
                         <p class="mt-5 text-base leading-8 text-slate-300 sm:text-lg">St. Dominic College of Asia manages multiple classrooms and meeting spaces that require efficient scheduling and monitoring to maximize utilization. Traditional reservation systems rely on manual booking and periodic physical checks, which lead to no-shows, double bookings, unverified use of spaces, and inefficient space allocation. Advances in Internet of Things (IoT) technologies — specifically Bluetooth Low Energy (BLE) beacon technology — enable low-cost, real-time verification of room occupancy. This project proposes a campus-tailored solution that integrates a mobile and web reservation application, a faculty approval workflow, BLE-based presence detection and occupancy monitoring, an automated staff notification system, and an AI-based room recommendation feature that assists users in selecting appropriate spaces based on availability and room attributes, while incorporating post-reservation feedback analysis to support facility management decisions.</p>
+                        <div class="mt-4 inline-flex items-center gap-1 rounded-lg border border-indigo-300/40 bg-indigo-400/10 px-4 py-2.5 text-sm text-indigo-100"><span class="font-semibold text-indigo-300">Role:</span><span>Quality Assurance Engineer &amp; Technical Writer</span></div>
+                        <div class="mt-4 rounded-xl border border-white/10 bg-slate-950/40 p-4 sm:p-5"><h3 class="text-sm font-semibold uppercase tracking-wide text-indigo-300">Technologies/components used</h3><p class="mt-2 text-sm leading-7 text-slate-300"><span class="font-semibold text-white">Stack:</span> JavaScript, Next.js, React Native with Expo, Firebase Authentication, Cloud Firestore, Realtime Database, Firebase Cloud Messaging, Supabase Storage, and ESP32 BLE beacon modules (iBeacon/RSSI).</p><p class="mt-2 text-sm leading-7 text-slate-300"><span class="font-semibold text-white">Components:</span> Mobile reservation app, admin approval portal, real-time occupancy dashboard, content-based room recommendations, automated alerts, and VADER feedback sentiment analysis.</p></div>
+                        <button type="button" data-open-team aria-haspopup="dialog" aria-controls="eroom-team-dialog" class="mr-3 mt-6 inline-flex rounded-lg border border-indigo-300/40 bg-indigo-400/10 px-4 py-2.5 text-sm font-semibold text-indigo-100 transition hover:bg-indigo-400/20 focus:outline-none focus:ring-2 focus:ring-indigo-200">Meet the team</button>
+                        <a href="assets/projects/eroom-reserve-capstone-paper.pdf" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex rounded-lg border border-indigo-300/40 bg-indigo-400/10 px-4 py-2.5 text-sm font-semibold text-indigo-100 transition hover:bg-indigo-400/20 focus:outline-none focus:ring-2 focus:ring-indigo-200">View paper <span class="ml-2" aria-hidden="true">↗</span></a>
                     </div>
                 </article>
                 <article class="overflow-hidden rounded-3xl border border-white/10 bg-slate-900/75 shadow-2xl shadow-indigo-950/30 backdrop-blur-sm">
@@ -65,12 +131,106 @@
                         <p class="mb-3 text-sm font-semibold uppercase tracking-[0.15em] text-indigo-300">Online Ordering | Community Commerce</p>
                         <h2 class="text-xl font-bold leading-snug text-white sm:text-2xl">SariSite: Enhancing Accessibility of Localized Sari-Sari Stores in Philippine Subdivision Through Online Ordering</h2>
                         <p class="mt-5 text-base leading-8 text-slate-300 sm:text-lg">Sari-sari stores are an integral part of Filipino communities, serving as convenient sources of daily necessities within neighborhoods. However, many of these stores remain limited to traditional face-to-face transactions, which can be time-consuming and less accessible to residents with busy schedules or mobility constraints. With the increasing reliance on digital platforms for everyday needs, integrating an online ordering system for localized sari-sari stores offers a practical solution to improve accessibility and convenience. This study explores how such a system can enhance customer experience, streamline store operations, and strengthen the role of sari-sari stores in Philippine subdivisions.</p>
+                        <div class="mt-4 inline-flex items-center gap-1 rounded-lg border border-indigo-300/40 bg-indigo-400/10 px-4 py-2.5 text-sm text-indigo-100"><span class="font-semibold text-indigo-300">Role:</span><span>Quality Assurance Engineer &amp; Technical Writer</span></div>
+                        <div class="mt-4 rounded-xl border border-white/10 bg-slate-950/40 p-4 sm:p-5"><h3 class="text-sm font-semibold uppercase tracking-wide text-indigo-300">Technologies/components used</h3><p class="mt-2 text-sm leading-7 text-slate-300"><span class="font-semibold text-white">Stack:</span> Dart and Flutter Web, Node.js, Express.js, MongoDB Atlas, Firebase Authentication with Google Sign-In, Multer-based image uploads with cloud storage, Bruno for API testing, and GitHub. <span class="font-semibold text-white">Components:</span> Product catalog, shopping cart and ordering flow, store-owner inventory and order dashboard, delivery tracking, and GCash/cash payments.</p></div>
+                        <button type="button" data-open-sarisite-team aria-haspopup="dialog" aria-controls="sarisite-team-dialog" class="mr-3 mt-6 inline-flex rounded-lg border border-indigo-300/40 bg-indigo-400/10 px-4 py-2.5 text-sm font-semibold text-indigo-100 transition hover:bg-indigo-400/20 focus:outline-none focus:ring-2 focus:ring-indigo-200">Meet the team</button>
+                        <a href="assets/projects/sarisite-capstone-paper.pdf" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex rounded-lg border border-indigo-300/40 bg-indigo-400/10 px-4 py-2.5 text-sm font-semibold text-indigo-100 transition hover:bg-indigo-400/20 focus:outline-none focus:ring-2 focus:ring-indigo-200">View paper <span class="ml-2" aria-hidden="true">↗</span></a>
                     </div>
                 </article>
             </div>
         </section>
     </main>
+    <div id="sarisite-team-dialog" class="fixed inset-0 z-50 items-center justify-center bg-black/80 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="sarisite-team-title" hidden>
+        <div class="relative max-h-[92vh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-indigo-300/30 bg-slate-950 p-4 shadow-2xl shadow-indigo-950/50 sm:p-6">
+            <div class="mb-4 flex items-start justify-between gap-4">
+                <div>
+                    <h2 id="sarisite-team-title" class="text-2xl font-bold text-white sm:text-3xl">SariSite Team</h2>
+                    <p class="mt-2 text-sm text-slate-300">Hover over or tap a marker to see each member’s name.</p>
+                </div>
+                <button type="button" data-close-sarisite-team aria-label="Close team popup" class="shrink-0 rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-lg text-slate-200 transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-300">×</button>
+            </div>
+            <div class="relative mx-auto max-w-4xl overflow-hidden rounded-xl border border-white/10 bg-slate-900">
+                <img src="assets/projects/sarisite-team.png" alt="Four SariSite team members standing together in a hallway" class="block h-auto w-full" decoding="async">
+                <button type="button" class="team-hotspot" style="left:17%;top:70%" aria-label="Show Echepari, Adrian V." aria-describedby="sarisite-member-1" aria-expanded="false" data-open="false"><span id="sarisite-member-1" role="tooltip" class="team-tooltip team-tooltip--start">Echepari, Adrian V.</span></button>
+                <button type="button" class="team-hotspot" style="left:37%;top:70%" aria-label="Show Agoncillo, John Cyrus" aria-describedby="sarisite-member-2" aria-expanded="false" data-open="false"><span id="sarisite-member-2" role="tooltip" class="team-tooltip">Agoncillo, John Cyrus</span></button>
+                <button type="button" class="team-hotspot" style="left:54%;top:70%" aria-label="Show Magno, Joseph Emmanuel A." aria-describedby="sarisite-member-3" aria-expanded="false" data-open="false"><span id="sarisite-member-3" role="tooltip" class="team-tooltip">Magno, Joseph Emmanuel A.</span></button>
+                <button type="button" class="team-hotspot" style="left:75%;top:72%" aria-label="Show Otchia, Cybeir Kim O." aria-describedby="sarisite-member-4" aria-expanded="false" data-open="false"><span id="sarisite-member-4" role="tooltip" class="team-tooltip team-tooltip--end">Otchia, Cybeir Kim O.</span></button>
+            </div>
+        </div>
+    </div>
+    <div id="eroom-team-dialog" class="fixed inset-0 z-50 items-center justify-center bg-black/80 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="eroom-team-title" hidden>
+        <div class="relative max-h-[92vh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-indigo-300/30 bg-slate-950 p-4 shadow-2xl shadow-indigo-950/50 sm:p-6">
+            <div class="mb-4 flex items-start justify-between gap-4">
+                <div>
+                    <h2 id="eroom-team-title" class="text-2xl font-bold text-white sm:text-3xl">e-RoomReserve Team</h2>
+                    <p class="mt-2 text-sm text-slate-300">Hover over or tap a marker to see each member’s name.</p>
+                </div>
+                <button type="button" data-close-team aria-label="Close team popup" class="shrink-0 rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-lg text-slate-200 transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-300">×</button>
+            </div>
+            <div class="relative mx-auto max-w-4xl overflow-hidden rounded-xl border border-white/10 bg-slate-900">
+                <img src="assets/projects/eroom-reserve-team.png" alt="Four e-RoomReserve team members standing together during their project presentation" class="block h-auto w-full" decoding="async">
+                <button type="button" class="team-hotspot" style="left:17.5%;top:62%" aria-label="Show Echepari, Adrian V." aria-describedby="eroom-member-1" aria-expanded="false" data-open="false">
+                    <span id="eroom-member-1" role="tooltip" class="team-tooltip team-tooltip--start">Echepari, Adrian V.</span>
+                </button>
+                <button type="button" class="team-hotspot" style="left:28.5%;top:60%" aria-label="Show Agoncillo, John Cyrus" aria-describedby="eroom-member-2" aria-expanded="false" data-open="false">
+                    <span id="eroom-member-2" role="tooltip" class="team-tooltip">Agoncillo, John Cyrus</span>
+                </button>
+                <button type="button" class="team-hotspot" style="left:63%;top:64%" aria-label="Show Magno, Joseph Emmanuel A." aria-describedby="eroom-member-3" aria-expanded="false" data-open="false">
+                    <span id="eroom-member-3" role="tooltip" class="team-tooltip">Magno, Joseph Emmanuel A.</span>
+                </button>
+                <button type="button" class="team-hotspot" style="left:88%;top:67%" aria-label="Show Otchia, Cybeir Kim O." aria-describedby="eroom-member-4" aria-expanded="false" data-open="false">
+                    <span id="eroom-member-4" role="tooltip" class="team-tooltip team-tooltip--end">Otchia, Cybeir Kim O.</span>
+                </button>
+            </div>
+        </div>
+    </div>
     <script src="vanta.js"></script>
     <script src="burger.js"></script>
+    <script>
+        (() => {
+            const wireTeamDialog = (dialogId, openSelector, closeSelector) => {
+                const dialog = document.getElementById(dialogId);
+                const openButton = document.querySelector(openSelector);
+                const closeButton = dialog.querySelector(closeSelector);
+                const hotspots = Array.from(dialog.querySelectorAll(".team-hotspot"));
+                const closeDialog = () => {
+                    dialog.hidden = true;
+                    dialog.classList.remove("flex");
+                    document.body.style.overflow = "";
+                    hotspots.forEach((hotspot) => {
+                        hotspot.dataset.open = "false";
+                        hotspot.setAttribute("aria-expanded", "false");
+                    });
+                    openButton.focus();
+                };
+                openButton.addEventListener("click", () => {
+                    dialog.hidden = false;
+                    dialog.classList.add("flex");
+                    document.body.style.overflow = "hidden";
+                    closeButton.focus();
+                });
+                closeButton.addEventListener("click", closeDialog);
+                dialog.addEventListener("click", (event) => {
+                    if (event.target === dialog) closeDialog();
+                });
+                document.addEventListener("keydown", (event) => {
+                    if (event.key === "Escape" && !dialog.hidden) closeDialog();
+                });
+                hotspots.forEach((hotspot) => {
+                    hotspot.addEventListener("click", () => {
+                        const shouldOpen = hotspot.dataset.open !== "true";
+                        hotspots.forEach((item) => {
+                            item.dataset.open = "false";
+                            item.setAttribute("aria-expanded", "false");
+                        });
+                        hotspot.dataset.open = String(shouldOpen);
+                        hotspot.setAttribute("aria-expanded", String(shouldOpen));
+                    });
+                });
+            };
+            wireTeamDialog("eroom-team-dialog", "[data-open-team]", "[data-close-team]");
+            wireTeamDialog("sarisite-team-dialog", "[data-open-sarisite-team]", "[data-close-sarisite-team]");
+        })();
+    </script>
 </body>
 </html>
